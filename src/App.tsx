@@ -8,6 +8,11 @@ import StepLabels from "./StepLabels";
 import StepLabel from "./StepLabel";
 
 export default function App() {
+  // I suspect that this would create
+  // a problem if there were more than
+  // 1 wizard instance
+  // but this honestly isn't a
+  //problem for me
   var stepCount = 0;
   // if I were to do something like
   // const [stepCount, setStepCount] = useState(0)
