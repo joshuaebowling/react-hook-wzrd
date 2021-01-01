@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./styles.css";
 
 import useWizard from "./useWizard";
@@ -8,26 +8,35 @@ import StepLabels from "./StepLabels";
 import StepLabel from "./StepLabel";
 
 export default function App() {
-  const [stepCount, setStepCount] = useState(0);
-  // could call/control next prev outside of wizard item,
-  // but I'm not going to
-  const { WizardItem, next, prev, currentStep } = useWizard(
-    stepCount,
-    setStepCount
-  );
+  var stepCount = 0;
+  // if I were to do something like
+  // const [stepCount, setStepCount] = useState(0)
+  // and increment it in each WizardStep, I'd get
+  // an infinite loop
+  // Potentially this problem could be solved by externalizing the state
+  // to redux or a lighter weight option
+  const { WizardItem, next, prev, currentStep } = useWizard(stepCount);
+  const steps = [
+    { number: 1, label: "test", content: Step },
+    { number: 2, label: "test 2", content: Step2 }
+  ];
   return (
     <div className="App">
       <h1>React Hook Wizard</h1>
       <StepLabels
-        steps={
-          <>
-            <StepLabel name="test" stepNumber={1} currentStep={currentStep} />
-            <StepLabel name="test 2" stepNumber={2} currentStep={currentStep} />
-          </>
-        }
-      ></StepLabels>
-      <WizardItem StepContent={Step} number={1} label="test" />
-      <WizardItem StepContent={Step2} number={2} label="test2" />
+        steps={steps.map((s) => {
+          return (
+            <StepLabel
+              name={s.label}
+              stepNumber={s.number}
+              currentStep={currentStep}
+            />
+          );
+        })}
+      />
+      {steps.map((s) => (
+        <WizardItem StepContent={s.content} number={s.number} />
+      ))}
     </div>
   );
 }

@@ -4,19 +4,18 @@ const WizardItem = (next, prev, currentStep, incrementStepCount) => ({
   number
 }) => {
   incrementStepCount();
-  console.log("wizard log");
   if (currentStep !== number) return <></>;
   return <StepContent next={next} prev={prev} currentStep={currentStep} />;
 };
-function Wizard(stepCount, setStepCount) {
-  console.log("wiz");
+function Wizard(stepCount) {
   const [currentStep, setCurrentStep] = useState(1);
-  const incrementStepCount = () => ++stepCount;
+  const incrementStepCount = () => {
+    ++stepCount;
+  };
   const changeStep = (delta: () => number) => () => setCurrentStep(delta);
   const increment = changeStep(() => currentStep + 1);
   const decrement = changeStep(() => currentStep - 1);
   const next = () => {
-    console.log(currentStep, stepCount);
     if (currentStep >= stepCount) return false;
     increment();
     return currentStep;
