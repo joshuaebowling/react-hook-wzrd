@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { StepIncrementer } from "./StepIncrementer";
+
 const WizardItem = (next, prev, currentStep, incrementStepCount) => ({
   StepContent,
   number
@@ -7,16 +9,17 @@ const WizardItem = (next, prev, currentStep, incrementStepCount) => ({
   if (currentStep !== number) return <></>;
   return <StepContent next={next} prev={prev} currentStep={currentStep} />;
 };
-function Wizard(stepCount) {
+function Wizard() {
   const [currentStep, setCurrentStep] = useState(1);
+  const stepIncrementer = new StepIncrementer();
   const incrementStepCount = () => {
-    ++stepCount;
+    stepIncrementer.incrementStep();
   };
   const changeStep = (delta: () => number) => () => setCurrentStep(delta);
   const increment = changeStep(() => currentStep + 1);
   const decrement = changeStep(() => currentStep - 1);
   const next = () => {
-    if (currentStep >= stepCount) return false;
+    if (currentStep >= stepIncrementer.stepCount) return false;
     increment();
     return currentStep;
   };

@@ -8,19 +8,7 @@ import StepLabels from "./StepLabels";
 import StepLabel from "./StepLabel";
 
 export default function App() {
-  // I suspect that this would create
-  // a problem if there were more than
-  // 1 wizard instance
-  // but this honestly isn't a
-  //problem for me
-  var stepCount = 0;
-  // if I were to do something like
-  // const [stepCount, setStepCount] = useState(0)
-  // and increment it in each WizardStep, I'd get
-  // an infinite loop
-  // Potentially this problem could be solved by externalizing the state
-  // to redux or a lighter weight option
-  const { WizardItem, next, prev, currentStep } = useWizard(stepCount);
+  const { WizardItem, currentStep } = useWizard();
   const steps = [
     { number: 1, label: "test", content: Step },
     { number: 2, label: "test 2", content: Step2 }
@@ -28,17 +16,15 @@ export default function App() {
   return (
     <div className="App">
       <h1>React Hook Wizard</h1>
-      <StepLabels
-        steps={steps.map((s) => {
-          return (
-            <StepLabel
-              name={s.label}
-              stepNumber={s.number}
-              currentStep={currentStep}
-            />
-          );
-        })}
-      />
+      <StepLabels>
+        {steps.map((s) => (
+          <StepLabel
+            name={s.label}
+            stepNumber={s.number}
+            currentStep={currentStep}
+          />
+        ))}
+      </StepLabels>
       {steps.map((s) => (
         <WizardItem StepContent={s.content} number={s.number} />
       ))}

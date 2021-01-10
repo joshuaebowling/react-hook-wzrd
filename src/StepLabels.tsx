@@ -1,7 +1,7 @@
 import React from "react";
 
-const StepLabels = ({ steps }) => {
-  return <div className="flex-container">{steps}</div>;
+const StepLabels: React.FunctionComponent<{ children }> = (props) => {
+  return <div className="flex-container">{props.children}</div>;
 };
 
 export default StepLabels;
