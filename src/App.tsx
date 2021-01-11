@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React from "react";
 import "./styles.css";
 
 import useWizard from "./useWizard";
