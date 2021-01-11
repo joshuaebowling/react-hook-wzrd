@@ -1,8 +1,12 @@
 {
-  "name": "react-wizard",
+  "name": "react-hook-wzrd",
   "version": "1.0.0",
-  "description": "",
-  "keywords": [],
+  "description": "a relatively minimal, perhaps to minimal implementation of wizard functionality without any particular UI  elements",
+  "keywords": [
+    "wizard",
+    "typescript",
+    "react"
+  ],
   "main": "src/index.tsx",
   "dependencies": {
     "react": "17.0.0",

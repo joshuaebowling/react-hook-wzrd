@@ -1,15 +1,20 @@
 import React, { useState } from "react";
 import { StepIncrementer } from "./StepIncrementer";
 
-const WizardItem = (next, prev, currentStep, incrementStepCount) => ({
-  StepContent,
-  number
-}) => {
+const WizardItem = (
+  next: () => number | false,
+  prev: () => number | false,
+  currentStep: number,
+  incrementStepCount: () => void
+) => ({ StepContent, number }) => {
+  // + 1 item to the number of steps
   incrementStepCount();
   if (currentStep !== number) return <></>;
   return <StepContent next={next} prev={prev} currentStep={currentStep} />;
 };
+
 function Wizard() {
+  // lets start on step 1. The first step.
   const [currentStep, setCurrentStep] = useState(1);
   const stepIncrementer = new StepIncrementer();
   const incrementStepCount = () => {

@@ -25,8 +25,8 @@ export default function App() {
           />
         ))}
       </StepLabels>
-      {steps.map((s) => (
-        <WizardItem StepContent={s.content} number={s.number} />
+      {steps.map((step) => (
+        <WizardItem number={step.number} StepContent={step.content} />
       ))}
     </div>
   );
