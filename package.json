@@ -2,16 +2,17 @@
   "name": "react-hook-wzrd",
   "version": "1.0.0",
   "description": "a relatively minimal, perhaps to minimal implementation of wizard functionality without any particular UI  elements",
-  "keywords": [
-    "wizard",
-    "typescript",
-    "react"
-  ],
+  "jest": {
+    "testRegex": "**/*/spec.tsx"
+  },
+  "keywords": ["wizard", "typescript", "react"],
   "main": "src/index.tsx",
   "dependencies": {
+    "@testing-library/react": "12.0.0",
     "react": "17.0.0",
     "react-dom": "17.0.0",
-    "react-scripts": "3.3.0"
+    "react-scripts": "3.3.0",
+    "should": "13.2.3"
   },
   "devDependencies": {
     "@types/react": "16.9.19",
@@ -24,10 +25,5 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  "browserslist": [">0.2%", "not dead", "not ie <= 11", "not op_mini all"]
 }
