@@ -1,5 +1,5 @@
 import should from "should";
-import React, { useState } from "react";
+import React from "react";
 import { render, fireEvent, waitFor, screen  } from "@testing-library/react";
 import useWizard from "./useWizard";
 import { StepArgs } from "./types";

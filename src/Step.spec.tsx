@@ -1,7 +1,7 @@
-import should from "should";
 import React, { useState } from "react";
 import { render, fireEvent, waitFor, screen } from "@testing-library/react";
 import Step from "./Step";
+import '@testing-library/jest-dom/extend-expect'
 
 describe("Step Component Tests", function () {
     const StepContainer: React.FunctionComponent = () => {
@@ -12,19 +12,19 @@ describe("Step Component Tests", function () {
     }
   it("should show initial current step as 1", () => {
     render(<StepContainer />);
-    should(screen.getByText("currentStep=1")).be.an.Object();
+    expect(screen.getByText("currentStep=1")).not.toBeNull();
   })
   it("should increment on next", async () => {
     render(<StepContainer />);
-    should(screen.getByText("next")).be.an.Object();
+    expect(screen.getByText("next")).not.toBeNull()
     fireEvent.click(screen.getByText("next"));
-    should(screen.getByText("currentStep=2")).be.an.Object();
+    expect(screen.getByText("currentStep=2")).not.toBeNull();
   });
   it("should decrement on prev", async () => {
     render(<StepContainer />);
-    should(screen.getByText("prev")).be.an.Object();
+    expect(screen.getByText("prev")).not.toBeNull();
     fireEvent.click(screen.getByText("prev"));
-    should(screen.getByText("currentStep=0")).be.an.Object();
+    expect(screen.getByText("currentStep=0")).not.toBeNull()
   });
 
 });

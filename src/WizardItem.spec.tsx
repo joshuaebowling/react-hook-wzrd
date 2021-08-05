@@ -1,4 +1,3 @@
-import should from "should";
 import React, { useState } from "react";
 import { render, fireEvent, waitFor, screen  } from "@testing-library/react";
 import WizardItem from "./WizardItem";

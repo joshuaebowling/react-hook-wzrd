@@ -1,4 +1,3 @@
-import should from "should";
 import React, { useState } from "react";
 import { render, fireEvent, waitFor, screen  } from "@testing-library/react";
 import Step from "./Step2";
@@ -13,12 +12,12 @@ describe("Step Component Tests", function () {
     }
   it("next button should be disabled initally", async () => {
     render(<StepContainer />);
-    should(screen.getByText("next")).be.an.Object()
+    expect(screen.getByText("next")).not.toBeNull()
     expect(screen.getByText("next")).toBeDisabled()
   });
   it("next button should enable after entering 'test' into challenge input", async () => {
     render(<StepContainer />);
-    should(screen.getByLabelText("Challenge")).be.an.Object()
+    expect(screen.getByLabelText("Challenge")).not.toBeNull()
     fireEvent.change(screen.getByLabelText("Challenge"), {target: {value: "test"}})
     expect(screen.getByLabelText("Challenge")).toHaveValue("test")
     expect(screen.getByText("next")).toBeEnabled()    
@@ -27,7 +26,7 @@ describe("Step Component Tests", function () {
     render(<StepContainer />);
     fireEvent.change(screen.getByLabelText("Challenge"), {target: {value: "test"}})
     fireEvent.click(screen.getByText("next"))
-    should(screen.getByText("currentStep=2")).be.an.Object()
+    expect(screen.getByText("currentStep=2")).not.toBeNull()
   });
   it("next button should remain disabled when value other than test is entered", () => {
     render(<StepContainer />);
