@@ -1,11 +1,11 @@
 import React from "react";
-
-const Step = ({ next, prev, currentStep }) => {
+import { StepArgs } from "./types";
+const Step: React.FunctionComponent<StepArgs> = ({ next, prev, currentStep }) => {
   return (
     <div data-testid="step-component">
-      <button onClick={(e) => prev(e)}>prev</button>
+      <button onClick={() => prev()}>prev</button>
       <span>currentStep={currentStep}</span>
-      <button onClick={(e) => next(e)}>next</button>
+      <button onClick={() => next()}>next</button>
     </div>
   );
 };

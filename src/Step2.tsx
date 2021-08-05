@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { StepArgs } from "./types";
 
-const Step = ({ next, prev, currentStep }) => {
-  console.log("step");
+const Step: React.FunctionComponent<StepArgs> = ({ next, prev, currentStep }) => {
   const [val, setVal] = useState("");
   const [disabled, setDisabled] = useState(true);
   useEffect(() => {
@@ -10,10 +10,12 @@ const Step = ({ next, prev, currentStep }) => {
   return (
     <div>
       <button onClick={prev}>prev</button>
-      <input value={val} onChange={(e) => setVal(e.target.value)} />
-      <button disabled={disabled} type="button">
+      <label htmlFor="challenge">Challenge</label>
+      <input id="challenge" name="challenge" value={val} onChange={(e) => setVal(e.target.value)} />
+      <button disabled={disabled} type="button" onClick={next}>
         next
       </button>
+      <span>currentStep={currentStep}</span>
       {val !== "test" && <p>Enter the word "test" into input to proceed</p>}
     </div>
   );
